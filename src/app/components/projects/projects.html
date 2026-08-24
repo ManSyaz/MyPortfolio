@@ -1,0 +1,24 @@
+<section id="projects" class="projects">
+  <div class="container">
+    <span class="eyebrow">Work</span>
+    <h2 class="section-title">Selected projects</h2>
+    <p class="section-lede">
+      Two of these are internal systems I can't show screens of — described here from my actual contribution instead. Everything with a repo link is real, working code you can open right now.
+    </p>
+
+    <div class="featured-list">
+      @for (project of featured; track project.slug) {
+        <app-project-card [project]="project" [featured]="true" />
+      }
+    </div>
+
+    <div class="secondary-block">
+      <h3 class="secondary-heading">Other projects</h3>
+      <div class="secondary-grid">
+        @for (project of secondary; track project.slug) {
+          <app-project-card [project]="project" />
+        }
+      </div>
+    </div>
+  </div>
+</section>

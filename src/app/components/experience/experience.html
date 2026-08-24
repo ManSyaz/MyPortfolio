@@ -1,0 +1,42 @@
+<section id="experience" class="experience">
+  <div class="container">
+    <span class="eyebrow">Experience</span>
+    <h2 class="section-title">Four roles, one direction</h2>
+    <p class="section-lede">Intern to protégé to system developer at a federal agency — each role handed real users to a system I was responsible for.</p>
+
+    <ol class="timeline">
+      @for (entry of entries; track entry.company) {
+        <li class="timeline-entry">
+          <div class="timeline-node" aria-hidden="true"></div>
+
+          <div class="timeline-card card">
+            <div class="timeline-head">
+              <div>
+                <h3 class="timeline-role">{{ entry.role }}</h3>
+                <p class="timeline-company">{{ entry.company }} · {{ entry.location }}</p>
+              </div>
+              <span class="timeline-period">{{ entry.period }}</span>
+            </div>
+
+            <p class="timeline-summary">{{ entry.summary }}</p>
+
+            <ul class="timeline-stack" aria-label="Technologies used">
+              @for (tech of entry.stack; track tech) {
+                <li class="chip">{{ tech }}</li>
+              }
+            </ul>
+
+            <details class="timeline-details">
+              <summary>Show contributions</summary>
+              <ul class="timeline-highlights">
+                @for (highlight of entry.highlights; track highlight) {
+                  <li>{{ highlight }}</li>
+                }
+              </ul>
+            </details>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

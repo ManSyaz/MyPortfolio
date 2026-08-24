@@ -1,0 +1,52 @@
+<section id="about" class="about">
+  <div class="container about-inner">
+    <div class="about-copy">
+      @if (personalInfo.photoUrl; as photoUrl) {
+        <img class="about-photo" [src]="photoUrl" [alt]="personalInfo.fullName" />
+      }
+
+      <span class="eyebrow">About</span>
+      <h2 class="section-title">From Computer Science graduate to system developer</h2>
+
+      @for (paragraph of paragraphs; track $index) {
+        <p class="about-paragraph">{{ paragraph }}</p>
+      }
+    </div>
+
+    <aside class="about-facts card" aria-label="Education and background summary">
+      <h3 class="facts-heading">Education</h3>
+
+      @for (entry of education; track entry.credential) {
+        <div class="facts-entry">
+          <p class="facts-credential">{{ entry.credential }}</p>
+          <p class="facts-institution">{{ entry.institution }} · {{ entry.location }}</p>
+          <p class="facts-meta">
+            <span>{{ entry.period }}</span>
+            <span class="facts-dot" aria-hidden="true">·</span>
+            <span>{{ entry.gpa }}</span>
+          </p>
+          @if (entry.deansList?.length) {
+            <p class="facts-deanslist">Dean's List: {{ entry.deansList!.join(', ') }}</p>
+          }
+        </div>
+      }
+
+      <div class="facts-divider"></div>
+
+      <dl class="facts-summary">
+        <div class="facts-row">
+          <dt>Location</dt>
+          <dd>{{ personalInfo.location }}</dd>
+        </div>
+        <div class="facts-row">
+          <dt>Availability</dt>
+          <dd>{{ personalInfo.availability }}</dd>
+        </div>
+        <div class="facts-row">
+          <dt>Languages</dt>
+          <dd>English, Malay</dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</section>

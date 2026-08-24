@@ -1,0 +1,59 @@
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="eyebrow">{{ personalInfo.roleLong }} · {{ personalInfo.location }}</span>
+
+      <h1 class="hero-headline">{{ personalInfo.heroHeadline }}</h1>
+
+      <p class="hero-subline">{{ personalInfo.heroSubline }}</p>
+
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#projects">View Work</a>
+        <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="hero-availability">
+          <span class="hero-availability-dot" aria-hidden="true"></span>
+          {{ personalInfo.availability }}
+        </span>
+
+        <ul class="hero-stack" aria-label="Core technologies">
+          @for (tech of personalInfo.heroStack; track tech) {
+            <li class="chip">{{ tech }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="blueprint">
+        <svg viewBox="0 0 320 320" fill="none">
+          <defs>
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.35" />
+            </pattern>
+          </defs>
+          <rect width="320" height="320" fill="url(#grid)" />
+
+          <rect x="40" y="40" width="90" height="60" rx="4" class="node" />
+          <rect x="190" y="50" width="90" height="60" rx="4" class="node" />
+          <rect x="115" y="180" width="90" height="60" rx="4" class="node node-accent" />
+          <rect x="40" y="240" width="70" height="44" rx="4" class="node" />
+          <rect x="210" y="230" width="70" height="44" rx="4" class="node" />
+
+          <path d="M85 100 V150 Q85 160 95 160 H160" class="link" />
+          <path d="M235 110 V150 Q235 160 225 160 H160" class="link" />
+          <path d="M150 240 V255 Q150 262 142 262 H110" class="link" />
+          <path d="M195 240 V250 Q195 258 203 258 H245" class="link" />
+
+          <circle cx="160" cy="210" r="3" class="pulse" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <a class="scroll-cue" href="#experience" aria-label="Scroll to experience section">
+    <span></span>
+  </a>
+</section>

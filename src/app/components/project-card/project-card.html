@@ -1,0 +1,48 @@
+<article class="project-card card">
+  @if (project().screenshot; as screenshot) {
+    <div class="project-screenshot">
+      <img [src]="screenshot.src" [alt]="screenshot.alt" loading="lazy" />
+    </div>
+  }
+
+  <div class="project-head">
+    <span class="chip chip-accent project-context">{{ project().context }}</span>
+    @if (project().confidential) {
+      <span class="chip project-confidential">{{ project().confidentialLabel ?? 'Confidential' }}</span>
+    }
+    <span class="project-period">{{ project().period }}</span>
+  </div>
+
+  <h3 class="project-name">{{ project().name }}</h3>
+  <p class="project-tagline">{{ project().tagline }}</p>
+  <p class="project-role">{{ project().role }}</p>
+
+  <ul class="project-stack" aria-label="Technologies used">
+    @for (tech of project().stack; track tech) {
+      <li class="chip">{{ tech }}</li>
+    }
+  </ul>
+
+  <ul class="project-features">
+    @for (feature of project().features; track feature) {
+      <li>{{ feature }}</li>
+    }
+  </ul>
+
+  @if (project().confidential && project().confidentialNote) {
+    <p class="project-confidential-note">{{ project().confidentialNote }}</p>
+  }
+
+  @if (project().links?.length) {
+    <div class="project-links">
+      @for (link of project().links; track link.url) {
+        <a class="btn btn-secondary project-link" [href]="link.url" target="_blank" rel="noopener">
+          {{ link.label }}
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M6 4h6v6M12 4 4 12" />
+          </svg>
+        </a>
+      }
+    </div>
+  }
+</article>

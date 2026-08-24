@@ -1,0 +1,25 @@
+<section id="skills" class="skills">
+  <div class="container">
+    <span class="eyebrow">Skills</span>
+    <h2 class="section-title">What I actually build with</h2>
+    <p class="section-lede">
+      Grouped by where the skill sits in a system, not by how many years I've used it. Each one is tagged with where it comes from — production work, a professional project, or coursework.
+    </p>
+
+    <div class="skills-grid">
+      @for (group of groups; track group.label) {
+        <div class="skill-group card">
+          <h3 class="skill-group-label">{{ group.label }}</h3>
+          <ul class="skill-list">
+            @for (skill of group.skills; track skill.name) {
+              <li class="skill-item">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-context">{{ skill.context }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

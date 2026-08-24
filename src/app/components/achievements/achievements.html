@@ -1,0 +1,22 @@
+<section id="achievements" class="achievements">
+  <div class="container">
+    <span class="eyebrow">Leadership &amp; Community</span>
+    <h2 class="section-title">Beyond the code</h2>
+    <p class="section-lede">Four years of running things in front of a room, not just behind a terminal.</p>
+
+    <ul class="achievements-grid">
+      @for (item of achievements; track item.title) {
+        <li class="achievement-card card">
+          <div class="achievement-head">
+            <h3 class="achievement-title">{{ item.title }}</h3>
+            @if (item.period) {
+              <span class="achievement-period">{{ item.period }}</span>
+            }
+          </div>
+          <p class="achievement-org">{{ item.organisation }}</p>
+          <p class="achievement-description">{{ item.description }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

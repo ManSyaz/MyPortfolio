@@ -1,0 +1,63 @@
+<section id="contact" class="contact">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h2 class="section-title">Let's talk</h2>
+    <p class="section-lede">
+      {{ personalInfo.availability }}. If there's a system that needs someone who can own it end-to-end, I'd like to hear about it.
+    </p>
+
+    <ul class="contact-grid">
+      @for (item of contactItems; track item.label) {
+        <li>
+          @if (item.href) {
+            <a
+              class="contact-card card"
+              [href]="item.href"
+              [target]="item.external ? '_blank' : null"
+              [rel]="item.external ? 'noopener' : null"
+            >
+              <span class="contact-icon" aria-hidden="true">
+                @switch (item.icon) {
+                  @case ('email') {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="m4 7 8 6 8-6" />
+                    </svg>
+                  }
+                  @case ('linkedin') {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                      <rect x="4" y="4" width="16" height="16" rx="3" />
+                      <path d="M9 10.5v6M9 8v.01M13 16.5v-3.6a1.9 1.9 0 0 1 3.8 0v3.6" />
+                    </svg>
+                  }
+                  @case ('github') {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                      <path d="m8 9-3 3 3 3M16 9l3 3-3 3M13.5 6.5l-3 11" />
+                    </svg>
+                  }
+                }
+              </span>
+              <span class="contact-text">
+                <span class="contact-label">{{ item.label }}</span>
+                <span class="contact-value">{{ item.value }}</span>
+              </span>
+            </a>
+          } @else {
+            <div class="contact-card card">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11Z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+              </span>
+              <span class="contact-text">
+                <span class="contact-label">{{ item.label }}</span>
+                <span class="contact-value">{{ item.value }}</span>
+              </span>
+            </div>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,143 @@
+:host {
+  display: block;
+  transition: border-color var(--duration-base) var(--ease-standard);
+}
+
+:host(:hover) .project-card {
+  border-color: var(--color-accent);
+}
+
+.project-card {
+  height: 100%;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-screenshot {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface-2);
+  margin-bottom: var(--space-5);
+}
+
+.project-screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.project-period {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.project-confidential {
+  color: var(--color-brass);
+  background: var(--color-brass-dim);
+}
+
+.project-name {
+  font-size: var(--text-xl);
+  margin-top: var(--space-4);
+}
+
+.project-tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-3);
+  max-width: 58ch;
+}
+
+.project-role {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  margin-top: var(--space-3);
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.project-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-rule-soft);
+}
+
+.project-features li {
+  position: relative;
+  padding-left: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-muted);
+}
+
+.project-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 1px;
+  background: var(--color-ink-muted);
+}
+
+.project-confidential-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-4);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+
+.project-link svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ---------- featured variant ---------- */
+
+:host(.is-featured) .project-card {
+  padding: var(--space-8);
+}
+
+:host(.is-featured) .project-name {
+  font-size: var(--text-2xl);
+}
+
+:host(.is-featured) .project-tagline {
+  font-size: var(--text-lg);
+}
