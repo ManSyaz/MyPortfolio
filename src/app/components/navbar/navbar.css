@@ -78,6 +78,14 @@
   right: 0;
 }
 
+.nav-desktop a.is-active {
+  color: var(--color-ink);
+}
+
+.nav-desktop a.is-active::after {
+  right: 0;
+}
+
 /* ---------- actions ---------- */
 
 .header-actions {
@@ -90,8 +98,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
   color: var(--color-ink-muted);
   transition:
@@ -119,8 +127,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-sm);
 }
 
@@ -182,22 +190,29 @@
 .nav-mobile ul {
   display: flex;
   flex-direction: column;
-  padding: var(--space-4) var(--space-4) var(--space-6);
+  padding: var(--space-4) var(--space-4) max(var(--space-6), env(safe-area-inset-bottom));
   gap: var(--space-1);
 }
 
 .nav-mobile a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--text-lg);
-  padding: var(--space-3) var(--space-2);
+  padding: var(--space-3) var(--space-3);
   border-radius: var(--radius-sm);
   color: var(--color-ink);
 }
 
 .nav-mobile a:hover {
   background: var(--color-surface-2);
+}
+
+.nav-mobile a.is-active {
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
 }
 
 .mobile-cv-btn {
@@ -207,7 +222,7 @@
 
 /* ---------- breakpoints ---------- */
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .nav-desktop {
     display: block;
   }

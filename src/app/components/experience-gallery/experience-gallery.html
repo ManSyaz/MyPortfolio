@@ -1,0 +1,76 @@
+<div class="gallery-grid">
+  @for (card of cards(); track card.label; let cardIndex = $index) {
+    <article class="gallery-card card">
+      <div class="gallery-images">
+        <button
+          type="button"
+          class="gallery-thumb is-primary"
+          (click)="open(cardIndex, 0)"
+          [attr.aria-label]="'View larger image: ' + card.primary.alt"
+        >
+          <img [src]="card.primary.src" [alt]="card.primary.alt" loading="lazy" />
+        </button>
+
+        @if (card.secondary.length) {
+          <div class="gallery-secondary">
+            @for (image of card.secondary; track image.src; let i = $index) {
+              <button
+                type="button"
+                class="gallery-thumb"
+                (click)="open(cardIndex, i + 1)"
+                [attr.aria-label]="'View larger image: ' + image.alt"
+              >
+                <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <span class="chip chip-accent gallery-label">{{ card.label }}</span>
+      <p class="gallery-description">{{ card.description }}</p>
+    </article>
+  }
+</div>
+
+@if (activeCard(); as card) {
+  <div class="gallery-lightbox-backdrop" (click)="close()">
+    <div
+      class="gallery-lightbox"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="card.label + ' preview'"
+      (click)="$event.stopPropagation()"
+    >
+      <button #closeBtn type="button" class="gallery-lightbox-close" (click)="close()" aria-label="Close preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+
+      @if (card.images.length > 1) {
+        <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" (click)="prev()" aria-label="Previous image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" />
+          </svg>
+        </button>
+      }
+
+      <img
+        class="gallery-lightbox-image"
+        [src]="card.images[activeIndex()].src"
+        [alt]="card.images[activeIndex()].alt"
+      />
+
+      @if (card.images.length > 1) {
+        <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" (click)="next()" aria-label="Next image">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
+
+        <p class="gallery-lightbox-count">{{ activeIndex() + 1 }} / {{ card.images.length }}</p>
+      }
+    </div>
+  </div>
+}

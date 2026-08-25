@@ -1,6 +1,6 @@
 .contact {
   padding-block: var(--space-24);
-  background: var(--color-surface);
+  background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
   border-top: 1px solid var(--color-rule-soft);
 }
 

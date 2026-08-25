@@ -34,6 +34,10 @@
                 }
               </ul>
             </details>
+
+            @if (entry.gallery; as gallery) {
+              <app-experience-gallery [items]="gallery" />
+            }
           </div>
         </li>
       }

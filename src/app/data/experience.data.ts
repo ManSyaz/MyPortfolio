@@ -43,6 +43,38 @@ export const EXPERIENCE: ExperienceEntry[] = [
       'Assisted with system testing and documentation to support ongoing maintenance and scalability.',
     ],
     stack: ['Power BI', 'Laravel', 'SQL'],
+    gallery: [
+      {
+        label: 'Power BI Dashboard',
+        description:
+          'Interactive Power BI dashboard built for FELDA’s Jabatan Pembangunan Ekonomi Komuniti — tracking PPP project status, GMN/SKF facility management, and usahawan (entrepreneur) programme performance.',
+        images: [
+          {
+            src: '/images/felda/power-bi-dashboard.jpg',
+            alt: 'Power BI monthly dashboard showing PPP project counts, GMN/SKF status, and usahawan programme metrics',
+          },
+        ],
+      },
+      {
+        label: 'System Development',
+        description:
+          'IMS PPP (Sistem Pengurusan Maklumat Program Pembangunan Peneroka) — from the applicant-facing application form through to the approvals workflow reviewed by the jawatankuasa pelulus.',
+        images: [
+          {
+            src: '/images/felda/system-login.jpg',
+            alt: 'IMS PPP login screen',
+          },
+          {
+            src: '/images/felda/system-borang-permohonan.jpg',
+            alt: 'IMS PPP application form, Borang Permohonan',
+          },
+          {
+            src: '/images/felda/system-borang-diluluskan.jpg',
+            alt: 'IMS PPP list of approved applications',
+          },
+        ],
+      },
+    ],
   },
   {
     company: 'Berkat Global Services',

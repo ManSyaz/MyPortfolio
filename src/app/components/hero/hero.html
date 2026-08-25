@@ -28,26 +28,36 @@
 
     <div class="hero-visual" aria-hidden="true">
       <div class="blueprint">
+        <!-- Static for now — this diagram is a visual metaphor for "systems I
+             build and maintain"; motion is reserved for the Phase 4 polish pass. -->
         <svg viewBox="0 0 320 320" fill="none">
           <defs>
-            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.35" />
+            <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.25" />
             </pattern>
           </defs>
           <rect width="320" height="320" fill="url(#grid)" />
 
-          <rect x="40" y="40" width="90" height="60" rx="4" class="node" />
-          <rect x="190" y="50" width="90" height="60" rx="4" class="node" />
-          <rect x="115" y="180" width="90" height="60" rx="4" class="node node-accent" />
-          <rect x="40" y="240" width="70" height="44" rx="4" class="node" />
-          <rect x="210" y="230" width="70" height="44" rx="4" class="node" />
+          <!-- mesh: outer nodes connected to their neighbours -->
+          <path
+            d="M270 160 215 65 105 65 50 160 105 255 215 255 Z"
+            class="mesh"
+          />
 
-          <path d="M85 100 V150 Q85 160 95 160 H160" class="link" />
-          <path d="M235 110 V150 Q235 160 225 160 H160" class="link" />
-          <path d="M150 240 V255 Q150 262 142 262 H110" class="link" />
-          <path d="M195 240 V250 Q195 258 203 258 H245" class="link" />
+          <!-- spokes: outer nodes to the central system -->
+          <path d="M270 160 160 160 M215 65 160 160 M105 65 160 160 M50 160 160 160 M105 255 160 160 M215 255 160 160" class="link" />
 
-          <circle cx="160" cy="210" r="3" class="pulse" />
+          <!-- outer nodes -->
+          <circle cx="270" cy="160" r="5.5" class="node" />
+          <circle cx="215" cy="65" r="5.5" class="node" />
+          <circle cx="105" cy="65" r="5.5" class="node" />
+          <circle cx="50" cy="160" r="5.5" class="node" />
+          <circle cx="105" cy="255" r="5.5" class="node" />
+          <circle cx="215" cy="255" r="5.5" class="node" />
+
+          <!-- central, highlighted node -->
+          <circle cx="160" cy="160" r="15" class="node-ring" />
+          <circle cx="160" cy="160" r="9" class="node-core" />
         </svg>
       </div>
     </div>

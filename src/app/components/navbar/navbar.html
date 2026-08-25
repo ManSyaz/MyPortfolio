@@ -8,7 +8,13 @@
       <ul>
         @for (link of navLinks; track link.fragment) {
           <li>
-            <a [href]="'#' + link.fragment">{{ link.label }}</a>
+            <a
+              [href]="'#' + link.fragment"
+              [class.is-active]="activeFragment() === link.fragment"
+              [attr.aria-current]="activeFragment() === link.fragment ? 'true' : null"
+            >
+              {{ link.label }}
+            </a>
           </li>
         }
       </ul>
@@ -33,11 +39,10 @@
         }
       </button>
 
-      <a class="btn btn-secondary cv-btn" [href]="personalInfo.resumeUrl" download target="_blank" rel="noopener">
-        Download CV
-      </a>
+      <button type="button" class="btn btn-secondary cv-btn" (click)="openCvPreview()">Download CV</button>
 
       <button
+        #menuToggleBtn
         type="button"
         class="menu-toggle"
         (click)="toggleMenu()"
@@ -55,13 +60,18 @@
       <ul>
         @for (link of navLinks; track link.fragment) {
           <li>
-            <a [href]="'#' + link.fragment" (click)="closeMenu()">{{ link.label }}</a>
+            <a
+              [href]="'#' + link.fragment"
+              [class.is-active]="activeFragment() === link.fragment"
+              [attr.aria-current]="activeFragment() === link.fragment ? 'true' : null"
+              (click)="closeMenu()"
+            >
+              {{ link.label }}
+            </a>
           </li>
         }
         <li>
-          <a class="btn btn-primary mobile-cv-btn" [href]="personalInfo.resumeUrl" download target="_blank" rel="noopener" (click)="closeMenu()">
-            Download CV
-          </a>
+          <button type="button" class="btn btn-primary mobile-cv-btn" (click)="openCvPreview()">Download CV</button>
         </li>
       </ul>
     </nav>

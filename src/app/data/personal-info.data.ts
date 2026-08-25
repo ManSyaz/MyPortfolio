@@ -15,7 +15,6 @@ export const PERSONAL_INFO: PersonalInfo = {
   linkedinUrl: 'www.linkedin.com/in/aiman-syazwan-565b32243',
   availability: 'Open to relocation within Malaysia',
 
-  // TODO: place the actual PDF at public/documents/ — see note after Phase 1.
   resumeUrl: '/documents/Muhammad-Aiman-Syazwan-Resume.pdf',
   // photoUrl: set once a real profile photo is supplied.
 

@@ -1,0 +1,30 @@
+@if (isOpen()) {
+  <div class="cv-modal-backdrop" (click)="close()">
+    <div
+      class="cv-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cv-modal-title"
+      (click)="$event.stopPropagation()"
+    >
+      <header class="cv-modal-head">
+        <h2 id="cv-modal-title" class="cv-modal-title">Résumé — {{ personalInfo.displayName }}</h2>
+
+        <div class="cv-modal-actions">
+          <a class="btn btn-primary" [href]="personalInfo.resumeUrl" [download]="downloadName">
+            Download PDF
+          </a>
+          <button #closeBtn type="button" class="cv-modal-close" (click)="close()" aria-label="Close preview">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="cv-modal-body">
+        <iframe [src]="previewUrl" title="Résumé preview" class="cv-modal-frame"></iframe>
+      </div>
+    </div>
+  </div>
+}
