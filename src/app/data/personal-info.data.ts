@@ -15,7 +15,7 @@ export const PERSONAL_INFO: PersonalInfo = {
   linkedinUrl: 'www.linkedin.com/in/aiman-syazwan-565b32243',
   availability: 'Open to relocation within Malaysia',
 
-  resumeUrl: '/documents/Muhammad-Aiman-Syazwan-Resume.pdf',
+  resumeUrl: 'documents/Muhammad-Aiman-Syazwan-Resume.pdf',
   // photoUrl: set once a real profile photo is supplied.
 
   heroHeadline: 'I build and maintain the web systems a federal agency runs on.',

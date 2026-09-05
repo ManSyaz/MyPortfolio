@@ -50,7 +50,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
           'Interactive Power BI dashboard built for FELDA’s Jabatan Pembangunan Ekonomi Komuniti — tracking PPP project status, GMN/SKF facility management, and usahawan (entrepreneur) programme performance.',
         images: [
           {
-            src: '/images/felda/power-bi-dashboard.jpg',
+            src: 'images/felda/power-bi-dashboard.jpg',
             alt: 'Power BI monthly dashboard showing PPP project counts, GMN/SKF status, and usahawan programme metrics',
           },
         ],
@@ -61,15 +61,15 @@ export const EXPERIENCE: ExperienceEntry[] = [
           'IMS PPP (Sistem Pengurusan Maklumat Program Pembangunan Peneroka) — from the applicant-facing application form through to the approvals workflow reviewed by the jawatankuasa pelulus.',
         images: [
           {
-            src: '/images/felda/system-login.jpg',
+            src: 'images/felda/system-login.jpg',
             alt: 'IMS PPP login screen',
           },
           {
-            src: '/images/felda/system-borang-permohonan.jpg',
+            src: 'images/felda/system-borang-permohonan.jpg',
             alt: 'IMS PPP application form, Borang Permohonan',
           },
           {
-            src: '/images/felda/system-borang-diluluskan.jpg',
+            src: 'images/felda/system-borang-diluluskan.jpg',
             alt: 'IMS PPP list of approved applications',
           },
         ],
