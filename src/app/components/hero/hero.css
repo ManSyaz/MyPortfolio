@@ -1,15 +1,29 @@
 .hero {
   position: relative;
-  padding-block: var(--space-16) var(--space-24);
+  padding-block: var(--space-10) var(--section-pad);
   overflow: hidden;
 }
 
+/* A wide, very soft green bloom behind the headline — the only atmospheric
+   flourish on an otherwise white page. */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -18%;
+  right: -12%;
+  width: min(680px, 90%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22, 114, 74, 0.07) 0%, rgba(201, 162, 39, 0.05) 45%, transparent 70%);
+  pointer-events: none;
+}
+
 .hero-inner {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  gap: var(--space-16);
-  min-height: calc(100dvh - var(--header-height) - 8rem);
+  gap: var(--space-10);
 }
 
 .hero-content > * {
@@ -68,6 +82,13 @@
   margin-top: var(--space-8);
 }
 
+/* On the narrowest phones the two CTAs each take a full row rather than
+   squeezing to unreadable widths. */
+.hero-ctas .btn {
+  flex: 1 1 auto;
+  min-width: 10rem;
+}
+
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
@@ -82,10 +103,14 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--text-xs);
-  letter-spacing: 0.02em;
-  color: var(--color-ink-muted);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
 }
 
 .hero-availability-dot {
@@ -93,7 +118,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 0 3px var(--color-accent-dim);
+  box-shadow: 0 0 0 3px rgba(22, 114, 74, 0.16);
 }
 
 .hero-stack {
@@ -109,12 +134,25 @@
 }
 
 .blueprint {
+  position: relative;
   color: var(--color-rule);
   border: 1px solid var(--color-rule-soft);
   border-radius: var(--radius-md);
-  background: linear-gradient(155deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+  background: linear-gradient(155deg, #ffffff 0%, var(--color-surface-2) 100%);
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* Gilt edge along the top of the plate. */
+.blueprint::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-gold);
 }
 
 .blueprint svg {
@@ -124,9 +162,9 @@
 
 .mesh {
   fill: none;
-  stroke: var(--color-rule);
-  stroke-width: 1;
-  opacity: 0.55;
+  stroke: var(--color-gold-line);
+  stroke-width: 1.25;
+  opacity: 0.9;
 }
 
 .link {
@@ -137,20 +175,21 @@
 
 .node {
   fill: var(--color-surface);
-  stroke: var(--color-rule);
-  stroke-width: 1.25;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  opacity: 0.75;
 }
 
 .node-ring {
   fill: none;
-  stroke: var(--color-accent);
-  stroke-width: 1;
-  opacity: 0.4;
+  stroke: var(--color-gold-bright);
+  stroke-width: 1.25;
+  opacity: 0.7;
 }
 
 .node-core {
-  fill: var(--color-accent-dim);
-  stroke: var(--color-accent);
+  fill: var(--color-accent);
+  stroke: var(--color-accent-strong);
   stroke-width: 1.5;
 }
 
@@ -159,12 +198,12 @@
 .scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: var(--space-8);
+  bottom: var(--space-6);
   transform: translateX(-50%);
   display: none;
   width: 22px;
   height: 34px;
-  border: 1.5px solid var(--color-rule);
+  border: 1.5px solid var(--color-gold-line);
   border-radius: var(--radius-full);
 }
 
@@ -195,13 +234,25 @@
 
 /* ---------- breakpoints ---------- */
 
+@media (min-width: 480px) {
+  .hero-ctas .btn {
+    flex: 0 0 auto;
+  }
+}
+
 @media (min-width: 768px) {
-  .hero-ctas {
-    flex-wrap: nowrap;
+  .hero {
+    padding-block: var(--space-16) var(--space-24);
+  }
+
+  .hero-inner {
+    gap: var(--space-16);
+    min-height: calc(100dvh - var(--header-height) - 8rem);
   }
 
   .scroll-cue {
     display: block;
+    bottom: var(--space-8);
   }
 }
 

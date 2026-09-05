@@ -2,14 +2,31 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--duration-base) var(--ease-standard);
 }
 
+/* Gilt hairline that draws itself across the bar once the page moves. */
+.header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 0;
+  background: var(--gradient-gold);
+  transition: width var(--duration-slow) var(--ease-standard);
+}
+
 .header.is-scrolled {
-  border-bottom-color: var(--color-rule);
+  border-bottom-color: var(--color-rule-soft);
+  box-shadow: 0 6px 20px -18px rgba(22, 36, 28, 0.5);
+}
+
+.header.is-scrolled::after {
+  width: 100%;
 }
 
 .header-inner {
@@ -17,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 /* ---------- brand ---------- */
@@ -25,12 +42,25 @@
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--text-base);
   letter-spacing: -0.01em;
   color: var(--color-ink);
   transition: color var(--duration-fast) var(--ease-standard);
+}
+
+/* Gilt-ringed green dot, standing in for a monogram. */
+.brand::before {
+  content: '';
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-gold-dim), 0 0 0 4px var(--color-gold-line);
 }
 
 .brand:hover {
@@ -51,7 +81,7 @@
 
 .nav-desktop a {
   position: relative;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: var(--text-sm);
   color: var(--color-ink-muted);
@@ -64,14 +94,15 @@
   position: absolute;
   left: 0;
   right: 100%;
-  bottom: -2px;
-  height: 1px;
-  background: var(--color-accent);
+  bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-gold);
   transition: right var(--duration-base) var(--ease-standard);
 }
 
 .nav-desktop a:hover {
-  color: var(--color-ink);
+  color: var(--color-accent);
 }
 
 .nav-desktop a:hover::after {
@@ -79,7 +110,8 @@
 }
 
 .nav-desktop a.is-active {
-  color: var(--color-ink);
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 .nav-desktop a.is-active::after {
@@ -91,30 +123,7 @@
 .header-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-}
-
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  color: var(--color-ink-muted);
-  transition:
-    background-color var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
-}
-
-.theme-toggle:hover {
-  background: var(--color-surface-2);
-  color: var(--color-ink);
-}
-
-.theme-toggle svg {
-  width: 19px;
-  height: 19px;
+  gap: var(--space-2);
 }
 
 .cv-btn {
@@ -130,10 +139,14 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
+  border: 1px solid var(--color-rule-soft);
+  background: var(--color-surface);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .menu-toggle:hover {
-  background: var(--color-surface-2);
+  border-color: var(--color-gold-line);
+  background: var(--color-gold-dim);
 }
 
 .menu-toggle-bar,
@@ -141,9 +154,9 @@
 .menu-toggle-bar::after {
   display: block;
   width: 18px;
-  height: 1.5px;
-  background: var(--color-ink);
-  border-radius: 1px;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 2px;
   transition: transform var(--duration-base) var(--ease-standard), opacity var(--duration-fast) var(--ease-standard);
 }
 
@@ -183,27 +196,34 @@
 /* ---------- mobile nav panel ---------- */
 
 .nav-mobile {
-  border-top: 1px solid var(--color-rule);
-  background: var(--color-paper);
+  border-top: 1px solid var(--color-rule-soft);
+  background: var(--color-surface);
+  /* Bounded so a landscape phone never traps items below the fold. */
+  max-height: calc(100dvh - var(--header-height));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: var(--shadow-md);
 }
 
 .nav-mobile ul {
   display: flex;
   flex-direction: column;
-  padding: var(--space-4) var(--space-4) max(var(--space-6), env(safe-area-inset-bottom));
+  padding: var(--space-3) var(--space-4) max(var(--space-6), env(safe-area-inset-bottom));
   gap: var(--space-1);
 }
 
 .nav-mobile a {
   display: flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 48px;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--text-lg);
-  padding: var(--space-3) var(--space-3);
+  padding: var(--space-3);
   border-radius: var(--radius-sm);
+  border-left: 3px solid transparent;
   color: var(--color-ink);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .nav-mobile a:hover {
@@ -212,17 +232,23 @@
 
 .nav-mobile a.is-active {
   background: var(--color-accent-dim);
+  border-left-color: var(--color-gold-bright);
   color: var(--color-accent);
+  font-weight: 600;
 }
 
 .mobile-cv-btn {
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
   width: 100%;
 }
 
 /* ---------- breakpoints ---------- */
 
 @media (min-width: 1024px) {
+  .header-inner {
+    gap: var(--space-6);
+  }
+
   .nav-desktop {
     display: block;
   }

@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
-  background: rgba(8, 8, 16, 0.6);
-  backdrop-filter: blur(2px);
+  background: rgba(12, 26, 19, 0.62);
+  backdrop-filter: blur(3px);
 }
 
 .cv-modal {
@@ -18,6 +18,7 @@
   height: min(85dvh, 960px);
   background: var(--color-surface);
   border: 1px solid var(--color-rule-soft);
+  border-top: 3px solid var(--color-gold-bright);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   overflow: hidden;
@@ -57,8 +58,8 @@
 }
 
 .cv-modal-close:hover {
-  background: var(--color-surface-2);
-  color: var(--color-ink);
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
 }
 
 .cv-modal-close svg {

@@ -1,6 +1,6 @@
 .contact {
-  padding-block: var(--space-24);
-  background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
+  padding-block: var(--section-pad);
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-surface-2) 100%);
   border-top: 1px solid var(--color-rule-soft);
 }
 
@@ -19,16 +19,24 @@
   display: flex;
   align-items: center;
   gap: var(--space-4);
+  min-height: 76px;
   padding: var(--space-5);
-  background: var(--color-paper);
+  background: var(--color-surface);
   transition:
     border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
     transform var(--duration-fast) var(--ease-standard);
 }
 
 a.contact-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-1px);
+  border-color: var(--color-gold-line);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+a.contact-card:hover .contact-icon {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .contact-icon {
@@ -41,6 +49,9 @@ a.contact-card:hover {
   border-radius: var(--radius-sm);
   background: var(--color-accent-dim);
   color: var(--color-accent);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
 .contact-icon svg {
@@ -56,15 +67,16 @@ a.contact-card:hover {
 }
 
 .contact-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--text-xs);
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
 
 .contact-value {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: var(--text-sm);
   color: var(--color-ink);

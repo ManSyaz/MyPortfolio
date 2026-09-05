@@ -10,7 +10,6 @@ import {
   viewChild,
 } from '@angular/core';
 import { CvPreviewService } from '../../core/cv-preview.service';
-import { ThemeService } from '../../core/theme.service';
 import { NAV_LINKS } from '../../data/nav-links.data';
 import { PERSONAL_INFO } from '../../data/personal-info.data';
 
@@ -21,14 +20,12 @@ import { PERSONAL_INFO } from '../../data/personal-info.data';
   styleUrl: './navbar.css',
 })
 export class Navbar implements AfterViewInit, OnDestroy {
-  private readonly themeService = inject(ThemeService);
   private readonly cvPreview = inject(CvPreviewService);
   private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private sectionObserver?: IntersectionObserver;
 
   readonly navLinks = NAV_LINKS;
   readonly personalInfo = PERSONAL_INFO;
-  readonly theme = this.themeService.theme;
   readonly isMenuOpen = signal(false);
   readonly isScrolled = signal(false);
   readonly activeFragment = signal<string | null>(null);
@@ -44,6 +41,12 @@ export class Navbar implements AfterViewInit, OnDestroy {
           this.elementRef.nativeElement.querySelector<HTMLAnchorElement>('#mobile-nav a')?.focus();
         });
       }
+    });
+
+    // Freeze the page behind the open mobile panel, so a scroll gesture over
+    // the menu doesn't drag the document underneath it.
+    effect(() => {
+      document.body.classList.toggle('is-menu-open', this.isMenuOpen());
     });
   }
 
@@ -75,6 +78,7 @@ export class Navbar implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sectionObserver?.disconnect();
+    document.body.classList.remove('is-menu-open');
   }
 
   @HostListener('window:scroll')
@@ -88,10 +92,6 @@ export class Navbar implements AfterViewInit, OnDestroy {
       this.isMenuOpen.set(false);
       this.menuToggleBtn()?.focus();
     }
-  }
-
-  toggleTheme(): void {
-    this.themeService.toggle();
   }
 
   openCvPreview(): void {

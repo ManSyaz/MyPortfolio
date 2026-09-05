@@ -17,7 +17,8 @@
 }
 
 .gallery-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-gold-line);
+  box-shadow: var(--shadow-md);
 }
 
 .gallery-images {
@@ -49,8 +50,8 @@
 
 .gallery-thumb:hover,
 .gallery-thumb:focus-visible {
-  border-color: var(--color-accent);
-  opacity: 0.9;
+  border-color: var(--color-gold-bright);
+  opacity: 0.92;
 }
 
 .gallery-thumb img {
@@ -65,7 +66,7 @@
 
 .gallery-description {
   font-family: var(--font-body);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--color-ink-muted);
 }
@@ -79,9 +80,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6);
-  background: rgba(8, 8, 16, 0.75);
-  backdrop-filter: blur(2px);
+  padding: var(--space-4);
+  background: rgba(12, 26, 19, 0.78);
+  backdrop-filter: blur(3px);
 }
 
 .gallery-lightbox {
@@ -134,13 +135,14 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
-  background: rgba(23, 21, 42, 0.55);
+  background: rgba(15, 85, 55, 0.75);
+  border: 1px solid rgba(231, 214, 164, 0.4);
   color: #fff;
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
 .gallery-lightbox-nav:hover {
-  background: rgba(23, 21, 42, 0.8);
+  background: var(--color-accent-strong);
 }
 
 .gallery-lightbox-nav svg {
